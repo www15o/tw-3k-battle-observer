@@ -1,0 +1,79 @@
+{
+  "game": "three_kingdoms",
+  "version": "1.7.1",
+  "image_base": "0x140000000",
+  "sha256": "D592380F8FACA81602E94081862A3953E42D75842B6D8CB5ABBB8B7E6321F6E5",
+  "functions": {
+    "create_entries": "0x254d350",
+    "maintain_entries": "0x257b0a0",
+    "plan_entry": "0x257b380",
+    "select_wall": "0x2571860",
+    "capability_predicate": "0x2384e30",
+    "pocket_eligibility": "0x2565280",
+    "task_adapter": "0x25e3bd0",
+    "throw_grapples": "0x2601970",
+    "pocket_ladders_create": "0x254d6a2",
+    "pocket_ladders_rebuild": "0x257b122",
+    "pocket_score": "0x25507b0",
+    "wall_assault_callback": "0x252cb70",
+    "wall_assault_postprocess": "0x25787e0",
+    "task_record_builder": "0x24c7db0",
+    "postprocess_unit_eligibility": "0x24d1000",
+    "entry_clear_target": "0x25726f0",
+    "wall_assault_orchestrator": "0x24e1fb0",
+    "gate_group_factory": "0x24e4820",
+    "alternate_group_factory_a": "0x24e4dd0",
+    "dismount_group_factory": "0x24e5610",
+    "alternate_group_factory_b": "0x2515140"
+  },
+  "vtables": {
+    "pocket_ladders": "0x35739c8",
+    "siege_vehicle": "0x3573920",
+    "gate_assault": "0x35734b8",
+    "task_state_table": "0x3580600"
+  },
+  "strings": {
+    "throw_grapples": "0x357d758",
+    "move_to_grappling_positions": "0x357d7d8",
+    "grappling_state": "0x357d7f8",
+    "erect_ladders_preparation_state": "0x353f6a8",
+    "climb_ladders_state": "0x353f6c8",
+    "throw_grapples_state": "0x353f6e0",
+    "wall_scaling_state": "0x353f6f8",
+    "battle_pipe_climb": "0x330b248",
+    "battle_pipe_siege_tower_wall_door": "0x330b2e8"
+  },
+  "aobs": {
+    "create_entries": "48 89 5C 24 10 48 89 6C 24 18 48 89 74 24 20 57",
+    "pocket_eligibility": "40 53 48 83 EC 20 48 8B 42 60 48 8B DA 8B 88 40",
+    "capability_predicate": "40 53 48 83 EC 20 48 8B D9 E8 32 FA FF FF 84 C0",
+    "task_adapter": "33 C0 48 8D 4A D0 48 85 D2 48 0F 44 C8 E9 8E DD",
+    "throw_grapples": "48 8B C4 55 56 57 48 8D A8 F8 FE FF FF 48 81 EC"
+  },
+  "trace_profiles": {
+    "goal4.grapple": {
+      "description": "Read-only Wall Assault/Pocket Ladders/grapple correlation",
+        "hooks": [
+        "wall_assault_callback",
+        "create_entries",
+        "maintain_entries",
+        "plan_entry",
+        "select_wall",
+        "capability_predicate",
+        "pocket_eligibility",
+        "task_adapter",
+        "throw_grapples",
+        "entry_clear_target",
+        "wall_assault_postprocess",
+        "task_record_builder",
+        "postprocess_unit_eligibility",
+        "wall_assault_orchestrator",
+        "gate_group_factory",
+        "alternate_group_factory_a",
+        "dismount_group_factory",
+        "alternate_group_factory_b"
+      ],
+      "writes_allowed": false
+    }
+  }
+}
